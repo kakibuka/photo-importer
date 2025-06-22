@@ -16,11 +16,10 @@ def main():
     parser.add_argument('--input', required=True)
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
+    initializeDatabase()
 
     lastImported = retrieveLastImported()
     print("Import images created after {}".format(lastImported.isoformat()))
-
-    initializeDatabase()
 
     if not os.path.exists(args.output):
         os.makedirs(args.output)
