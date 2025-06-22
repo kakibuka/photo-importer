@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "photo-importer"
+version = "0.0.0"
+requires-python = ">= 3.9"
+dependencies = [
+    'importlib-metadata; python_version < "3.10"'
+]
+
+[project.scripts]
+photo-importer = "photo_importer.main:main"
