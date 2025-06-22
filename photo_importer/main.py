@@ -17,10 +17,9 @@ def main():
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
 
-    print("hello, world")
     lastImported = retrieveLastImported()
-    print(lastImported)
-    # print(insertLastImported())
+    print("Import images created after {}".format(lastImported.isoformat()))
+
     initializeDatabase()
 
     if not os.path.exists(args.output):
@@ -34,8 +33,9 @@ def main():
             if not os.path.exists(outputDir):
                 os.makedirs(outputDir)
                 print("Created output directory {}".format(outputDir))
-            print(creationTime.isoformat())
+            print("Importing {}. creation date: {}".format(imgPath.name, creationTime.isoformat()))
             shutil.copy2(imgPath.path, outputDir)
+    insertLastImported()
 
 if __name__ == '__main__':
     main()
