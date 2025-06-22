@@ -14,6 +14,8 @@ def initializeDatabase():
     conn = sqlite3.connect(dbpath)
     cursor = conn.cursor()
     initializeRemovableStorage(cursor)
+    initializeLocalStorage(cursor)
+    initializeHistory(cursor)
 
     conn.commit()
     conn.close()
